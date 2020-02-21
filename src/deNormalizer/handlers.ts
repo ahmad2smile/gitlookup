@@ -1,8 +1,14 @@
 import { Request, ResponseToolkit, ResponseObject } from "@hapi/hapi";
+import { NormalizedMenu } from "../models/NormalizedMenu";
+import { menuDenormalizer } from "../utils/menuDenormalizer";
 
 export const postDeNormalize = (
 	request: Request,
 	h: ResponseToolkit
 ): ResponseObject => {
-	return h.response(request.payload).code(200);
+	const normalizedMenu = request.payload as NormalizedMenu;
+
+	const menu = menuDenormalizer(normalizedMenu);
+
+	return h.response(menu).code(200);
 };
