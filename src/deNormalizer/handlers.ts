@@ -1,5 +1,8 @@
-import { Request, ResponseToolkit } from "@hapi/hapi";
+import { Request, ResponseToolkit, ResponseObject } from "@hapi/hapi";
 
-export const postDeNormalize = function(request: Request, h: ResponseToolkit) {
-	return h.response({ message: "Hello World!" }).code(200);
+export const postDeNormalize = (
+	request: Request,
+	h: ResponseToolkit
+): ResponseObject => {
+	return h.response(request.payload).code(200);
 };

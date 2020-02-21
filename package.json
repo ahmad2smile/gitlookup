@@ -7,7 +7,7 @@
 		"start": "node dist/index.js",
 		"dev": "concurrently \"npm:build:dev\" \"npm:start:run\"",
 		"start:run": "tsc && nodemon dist/index.js",
-		"build:dev": "tsc --watch --preserveWatchOutput",
+		"build:dev": "rimraf dist && tsc --watch --preserveWatchOutput",
 		"build": "tsc"
 	},
 	"devDependencies": {
@@ -27,9 +27,11 @@
 		"jest": "^25.1.0",
 		"nodemon": "^2.0.2",
 		"prettier": "^1.19.1",
+		"rimraf": "^3.0.2",
 		"typescript": "^3.8.2"
 	},
 	"dependencies": {
-		"@hapi/hapi": "^19.1.1"
+		"@hapi/hapi": "^19.1.1",
+		"@hapi/joi": "^17.1.0"
 	}
 }
