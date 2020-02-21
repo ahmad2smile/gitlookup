@@ -38,5 +38,14 @@
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
 		"@hapi/joi": "^17.1.0"
+	},
+	"jest": {
+		"clearMocks": true,
+		"coverageDirectory": "coverage",
+		"testEnvironment": "node",
+		"testPathIgnorePatterns": [
+			"\\\\node_modules\\\\",
+			"\\\\dist\\\\"
+		]
 	}
 }
