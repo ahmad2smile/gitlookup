@@ -8,9 +8,13 @@
 		"dev": "concurrently \"npm:build:dev\" \"npm:start:run\"",
 		"start:run": "tsc && nodemon dist/index.js",
 		"build:dev": "rimraf dist && tsc --watch --preserveWatchOutput",
-		"build": "tsc"
+		"build": "tsc",
+		"test": "jest"
 	},
 	"devDependencies": {
+		"@babel/core": "^7.8.4",
+		"@babel/preset-env": "^7.8.4",
+		"@babel/preset-typescript": "^7.8.3",
 		"@hapi/inert": "^6.0.1",
 		"@hapi/vision": "^6.0.0",
 		"@types/hapi__hapi": "^19.0.2",
@@ -21,6 +25,7 @@
 		"@types/node": "^13.7.4",
 		"@typescript-eslint/eslint-plugin": "^2.20.0",
 		"@typescript-eslint/parser": "^2.20.0",
+		"babel-jest": "^25.1.0",
 		"concurrently": "^5.1.0",
 		"eslint": "^6.8.0",
 		"hapi-swagger": "^12.1.0",
