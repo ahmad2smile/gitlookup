@@ -1,1 +1,54 @@
 <h4>Main Page</h4>
+
+<p>Respositories</p>
+
+<div class="list">
+	<table>
+		<tr>
+			<th>
+				Owner
+			</th>
+			<th>Name</th>
+			<th>
+				License
+			</th>
+			<th>
+				Stars
+			</th>
+			<th>
+				Created At
+			</th>
+			<th>
+				Updated At
+			</th>
+			<th>
+				Description
+			</th>
+		</tr>
+		{{#each results.items}}
+		<tr>
+			<td>
+				<a href="{{owner.html_url}}" target="__blank">
+					<img src="{{owner.avatar_url}}" alt="{{owner.login}}" title="{{owner.login}}">
+				</a>
+			</td>
+			<td><a target="__blank" href="{{html_url}}">{{name}}</a></td>
+			<td>
+				<p>{{license.name}}</p>
+			</td>
+			<td>
+				<p>{{stargazers_count}}</p>
+			</td>
+			<td>
+				<p>{{formatDate created_at}}</p>
+			</td>
+			<td>
+				<p>{{formatDate updated_at}}</p>
+			</td>
+			<td>
+				<p>{{description}}</p>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</div>

@@ -9,9 +9,9 @@ const init = async (): Promise<void> => {
 
 	const server = new Hapi.Server({ port });
 
-	server.route(routes);
-
 	await server.register(plugins);
+
+	server.route(routes);
 
 	server.views(views);
 
