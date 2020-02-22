@@ -7,8 +7,9 @@
 		"start": "node dist/index.js",
 		"dev": "concurrently \"npm:build:dev\" \"npm:start:run\"",
 		"start:run": "tsc && nodemon dist/index.js",
-		"build:dev": "rimraf dist && tsc --watch --preserveWatchOutput",
+		"build:dev": "rimraf dist && npm run postbuild && tsc --watch --preserveWatchOutput",
 		"build": "tsc",
+		"postbuild": "cd src && copyfiles ./**/*.html ../dist",
 		"test": "jest"
 	},
 	"devDependencies": {
@@ -27,6 +28,7 @@
 		"@typescript-eslint/parser": "^2.20.0",
 		"babel-jest": "^25.1.0",
 		"concurrently": "^5.1.0",
+		"copyfiles": "^2.2.0",
 		"eslint": "^6.8.0",
 		"hapi-swagger": "^12.1.0",
 		"jest": "^25.1.0",
@@ -37,7 +39,8 @@
 	},
 	"dependencies": {
 		"@hapi/hapi": "^19.1.1",
-		"@hapi/joi": "^17.1.0"
+		"@hapi/joi": "^17.1.0",
+		"handlebars": "^4.7.3"
 	},
 	"jest": {
 		"clearMocks": true,
