@@ -6,7 +6,10 @@ const entityDenormalizer = (
 	parents: Array<Entity>,
 	menu: NormalizedMenu
 ): Array<Entity> => {
-	const children = menu[parents[0].level + 1];
+	const parentLevel = parents[0].level;
+	const currentLevel = parentLevel + 1;
+
+	const children = menu[currentLevel];
 
 	if (!(children && children.length)) {
 		return parents;

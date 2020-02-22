@@ -1,5 +1,8 @@
 import { postDeNormalize } from "./handlers";
-import { postDeNormalizeValidator } from "./validators";
+import {
+	postDeNormalizeValidator,
+	normalizedResponseValidator
+} from "./validators";
 import { ServerRoute, Request, ResponseToolkit } from "@hapi/hapi";
 
 export const postDeNormalizer: ServerRoute = {
@@ -7,6 +10,7 @@ export const postDeNormalizer: ServerRoute = {
 	path: "/api/denormalize",
 	handler: postDeNormalize,
 	options: {
+		description: "De-Normalizer API for Menu Schema",
 		tags: ["api"],
 		validate: {
 			payload: postDeNormalizeValidator,
@@ -17,6 +21,7 @@ export const postDeNormalizer: ServerRoute = {
 			): Promise<void> => {
 				throw err;
 			}
-		}
+		},
+		response: { schema: normalizedResponseValidator }
 	}
 };

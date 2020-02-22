@@ -15,6 +15,7 @@ const entityValidator = Joi.object({
 export const postDeNormalizeValidator = Joi.object()
 	.min(1)
 	.message("Head not found in the payload")
+	.label("Head")
 	.pattern(
 		Joi.number().required(),
 		Joi.array()
@@ -22,3 +23,7 @@ export const postDeNormalizeValidator = Joi.object()
 			.has(entityValidator)
 			.message("Head must have at least one child")
 	);
+
+export const normalizedResponseValidator = Joi.array()
+	.items(entityValidator)
+	.has(entityValidator);
