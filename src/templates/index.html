@@ -16,10 +16,10 @@
 				Stars
 			</th>
 			<th>
-				Created At
+				Created
 			</th>
 			<th>
-				Updated At
+				Updated
 			</th>
 			<th>
 				Description
@@ -27,9 +27,14 @@
 		</tr>
 		{{#each results.items}}
 		<tr>
-			<td>
-				<a href="{{owner.html_url}}" target="__blank">
-					<img src="{{owner.avatar_url}}" alt="{{owner.login}}" title="{{owner.login}}">
+			<td class="owner-container">
+				<a href="{{owner.html_url}}" target="__blank" class="owner">
+					<img
+						src="{{owner.avatar_url}}"
+						alt="{{owner.login}}"
+						title="{{owner.login}}"
+						class="owner-logo"
+					/>
 				</a>
 			</td>
 			<td><a target="__blank" href="{{html_url}}">{{name}}</a></td>
