@@ -5,11 +5,10 @@
 	"license": "MIT",
 	"scripts": {
 		"start": "node dist/index.js",
-		"dev": "concurrently \"npm:build:dev\" \"npm:start:run\"",
-		"start:run": "tsc && nodemon dist/index.js",
-		"build:dev": "rimraf dist && npm run postbuild && tsc --watch --preserveWatchOutput",
-		"build": "tsc",
-		"postbuild": "cd src && copyfiles ./**/*.html ../dist",
+		"dev": "concurrently \"npm:dev:build\" \"npm:dev:start\" \"npm:copyfiles\"",
+		"dev:build": "tsc --watch --preserveWatchOutput",
+		"dev:start": "tsc && nodemon -e html,css,js,json --ignore src/ dist/index.js",
+		"copyfiles": "nodemon -e html --ignore dist/ --exec \"cd src && copyfiles ./**/*.html ../dist\"",
 		"test": "jest"
 	},
 	"devDependencies": {
