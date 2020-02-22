@@ -8,7 +8,7 @@ describe("Pagination Buttons Values", () => {
 	});
 
 	test("Return 1 to 3 pages array when less than 5 pages", () => {
-		const result = paginationButtons(1, 30);
+		const result = paginationButtons(1, 3);
 
 		expect(result).toStrictEqual([1, 2, 3]);
 	});
