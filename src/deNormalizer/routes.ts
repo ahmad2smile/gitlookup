@@ -4,6 +4,7 @@ import {
 	normalizedResponseValidator
 } from "./validators";
 import { ServerRoute, Request, ResponseToolkit } from "@hapi/hapi";
+import { boomify } from "@hapi/boom";
 
 export const postDeNormalizer: ServerRoute = {
 	method: "POST",
@@ -19,7 +20,9 @@ export const postDeNormalizer: ServerRoute = {
 				h: ResponseToolkit,
 				err: Error | undefined
 			): Promise<void> => {
-				throw err;
+				if (err) {
+					throw boomify(err);
+				}
 			}
 		},
 		response: { schema: normalizedResponseValidator }

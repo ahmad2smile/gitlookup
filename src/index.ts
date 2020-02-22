@@ -38,4 +38,9 @@ const init = async (): Promise<void> => {
 	console.log(`Listening  on port: ${port}`);
 };
 
+process.on("unhandledRejection", err => {
+	console.log(err);
+	process.exit(1);
+});
+
 init();

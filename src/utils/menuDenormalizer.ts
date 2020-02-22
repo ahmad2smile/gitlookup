@@ -1,6 +1,7 @@
 import { NormalizedMenu } from "../models/NormalizedMenu";
 import { Menu } from "../models/Menu";
 import { Entity } from "../models/Entity";
+import { Boom } from "@hapi/boom";
 
 const entityDenormalizer = (
 	parents: Array<Entity>,
@@ -9,6 +10,13 @@ const entityDenormalizer = (
 	const parentLevel = parents[0].level;
 	const currentLevel = parentLevel + 1;
 
+	if (isNaN(currentLevel)) {
+		throw new Boom("Invalid entity 'level' property");
+	}
+
+	// NOTE: Protected with isNaN above
+	// also input validation on API for 'level' will always be number
+	// eslint-disable-next-line security/detect-object-injection
 	const children = menu[currentLevel];
 
 	if (!(children && children.length)) {
