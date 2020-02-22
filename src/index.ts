@@ -21,11 +21,10 @@ const init = async (): Promise<void> => {
 
 	server.route({
 		method: "GET",
-		path: "/{param*}",
+		path: "/css/{path*}",
 		handler: {
 			directory: {
-				path: ".",
-				redirectToSlash: true
+				path: "css"
 			}
 		}
 	});

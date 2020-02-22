@@ -9,10 +9,11 @@ const githubApi = axios.create({
 });
 
 export const repositorySearch = async (
-	search: string
+	search: string,
+	page: number
 ): Promise<RepositorySearch> => {
 	const response = await githubApi.get(
-		`/search/repositories?q=${search}&sort=stars&order=desc`
+		`/search/repositories?q=${search}&sort=stars&order=desc&page=${page}`
 	);
 
 	return response.data;

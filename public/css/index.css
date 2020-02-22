@@ -43,3 +43,23 @@ table th {
 .owner .owner-logo {
 	width: 100%;
 }
+
+.pagination-buttons {
+	width: 100%;
+	display: flex;
+	padding: 20px;
+	justify-content: center;
+}
+
+.pagination-buttons a {
+	width: 39px;
+	font-size: 20px;
+	display: block;
+	background-color: #ffffff;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	color: #222222;
+	padding: 5px 0;
+	border: 1px solid #e1e4e8;
+}

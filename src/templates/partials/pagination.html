@@ -1,0 +1,21 @@
+<div class="pagination-container">
+	<div class="pagination-buttons">
+		<a href="/?page=1">
+			&#171;
+		</a>
+		<a href="/?page={{previousPage page}}">
+			&#8249;
+		</a>
+
+		{{#each buttons}}
+		<a href="/?page={{this}}">{{this}}</a>
+		{{/each}}
+
+		<a href="/?page={{nextPage page totalPages}}">
+			&#8250;
+		</a>
+		<a href="/?page={{totalPages}}">
+			&#187;
+		</a>
+	</div>
+</div>

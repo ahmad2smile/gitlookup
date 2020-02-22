@@ -13,10 +13,14 @@ export const indexViewRoute: ServerRoute = {
 		request: Request,
 		h: ResponseToolkit
 	): Promise<ResponseObject> => {
-		return new Promise((resolve, reject) =>
-			indexHandler(request, h)
-				.then(resolve)
-				.catch(reject)
-		);
+		return indexHandler(request, h);
+	}
+};
+
+export const errorPage: ServerRoute = {
+	method: "*",
+	path: "/{any*}",
+	handler: (request: Request, h: ResponseToolkit): ResponseObject => {
+		return h.view("error");
 	}
 };

@@ -29,12 +29,7 @@
 		<tr>
 			<td class="owner-container">
 				<a href="{{owner.html_url}}" target="__blank" class="owner">
-					<img
-						src="{{owner.avatar_url}}"
-						alt="{{owner.login}}"
-						title="{{owner.login}}"
-						class="owner-logo"
-					/>
+					<img src="{{owner.avatar_url}}" alt="{{owner.login}}" title="{{owner.login}}" class="owner-logo" />
 				</a>
 			</td>
 			<td><a target="__blank" href="{{html_url}}">{{name}}</a></td>
@@ -56,4 +51,6 @@
 		</tr>
 		{{/each}}
 	</table>
+
+	{{> pagination page=page totalPages=totalPages buttons=(paginationButtons page totalPages)}}
 </div>
