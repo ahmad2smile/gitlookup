@@ -1,4 +1,4 @@
-# Git-Lookup [![Build Status](https://github.com/ahmad2smile/gitlookup/workflows/Build/badge.svg)]() [![Tests](https://github.com/ahmad2smile/gitlookup/workflows/Tests/badge.svg)]()[Coverage](https://user-images.githubusercontent.com/6108922/75101547-e67a0800-55ff-11ea-96e6-1d01e1f8445d.png)
+# Git-Lookup [![Build Status](https://github.com/ahmad2smile/gitlookup/workflows/Build/badge.svg)]() [![Tests](https://github.com/ahmad2smile/gitlookup/workflows/Tests/badge.svg)]() [![Coverage](https://user-images.githubusercontent.com/6108922/75101547-e67a0800-55ff-11ea-96e6-1d01e1f8445d.png)]()
 
 API has 2 endpoints:
 
