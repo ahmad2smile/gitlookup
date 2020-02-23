@@ -149,6 +149,12 @@ Node JS Respository Search Results Dashboard with Pagination using [Handlebars J
 
 [Browse](http://gitlookup.azurewebsites.net/)
 
+## CI/CD
+
+Build and Tests are ran on **GitHub Actions** and then is deployed to **Azure App Services**
+
+[https://gitlookup.azurewebsites.net/](https://gitlookup.azurewebsites.net/)
+
 ## Usage
 
 #### Install:
@@ -162,6 +168,10 @@ npm i
 ```bash
 npm run dev
 ```
+
+#### Open:
+
+[`http://localhost:3005`](http://localhost:3005)
 
 #### TODOs:
 
