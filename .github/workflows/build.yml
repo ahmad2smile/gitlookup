@@ -7,7 +7,7 @@ on:
 
 env:
     AZURE_WEBAPP_NAME: gitlookup
-    AZURE_WEBAPP_PACKAGE_PATH: "./dist"
+    AZURE_WEBAPP_PACKAGE_PATH: "."
     NODE_VERSION: "12.x"
 
 jobs:
