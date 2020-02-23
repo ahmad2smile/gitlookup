@@ -10,7 +10,7 @@
 		"dev:build": "tsc --watch --preserveWatchOutput",
 		"dev:start": "tsc && nodemon -e html,css,js,json --ignore src/ dist/index.js",
 		"copyfiles": "nodemon -e html,css --ignore dist/ --exec \"copyfiles ./public/**/* dist & copyfiles -u 1 ./src/**/*.html dist\"",
-		"copyallfiles": "copyfiles ./public/**/* dist & copyfiles -u 1 ./src/**/*.html dist",
+		"copyallfiles": "copyfiles ./public/**/* dist && copyfiles -u 1 ./src/**/*.html dist && echo DONE!",
 		"test": "jest"
 	},
 	"devDependencies": {
