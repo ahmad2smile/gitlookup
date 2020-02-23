@@ -6,6 +6,7 @@ describe("de-Normalize Menu Utility", () => {
 	let normalizedMenu: NormalizedMenu;
 	let expectedResults: Menu;
 	let dangerousNormalizedMenu: NormalizedMenu;
+	let stackOverflowNormalizedMenu: NormalizedMenu;
 
 	beforeEach(() => {
 		normalizedMenu = {
@@ -143,6 +144,52 @@ describe("de-Normalize Menu Utility", () => {
 				{ id: 13, title: "Wall", level: 1, children: [], parent_id: 10 }
 			]
 		};
+
+		stackOverflowNormalizedMenu = {
+			"0": [
+				{
+					id: 10,
+					title: "House",
+					level: 0,
+					children: [],
+					parent_id: null
+				}
+			],
+			"1": [
+				{
+					id: 12,
+					title: "Red Roof",
+					level: 1,
+					children: [],
+					parent_id: 10
+				},
+				{
+					id: 18,
+					title: "Blue Roof",
+					level: 1,
+					children: [],
+					parent_id: 10
+				},
+				{ id: 13, title: "Wall", level: 1, children: [], parent_id: 10 }
+			],
+			"2": [
+				{
+					id: 12,
+					title: "Red Roof",
+					level: 1,
+					children: [],
+					parent_id: 10
+				},
+				{
+					id: 18,
+					title: "Blue Roof",
+					level: 1,
+					children: [],
+					parent_id: 10
+				},
+				{ id: 13, title: "Wall", level: 1, children: [], parent_id: 10 }
+			]
+		};
 	});
 
 	test("Denormalize", () => {
@@ -162,6 +209,14 @@ describe("de-Normalize Menu Utility", () => {
 	});
 
 	test("Throws Dangrous value of 'level' property", () => {
-		expect(() => menuDenormalizer(dangerousNormalizedMenu)).toThrow();
+		expect(() => menuDenormalizer(dangerousNormalizedMenu)).toThrow(
+			"Entity has Invalid property 'level'"
+		);
+	});
+
+	test("Throws Manual Computation terminal error", () => {
+		expect(() => menuDenormalizer(stackOverflowNormalizedMenu)).toThrow(
+			"Mannual computation termination of request"
+		);
 	});
 });
