@@ -19,16 +19,6 @@ const init = async (): Promise<void> => {
 
 	await server.register(plugins);
 
-	server.route({
-		method: "GET",
-		path: "/css/{path*}",
-		handler: {
-			directory: {
-				path: "css"
-			}
-		}
-	});
-
 	server.route(routes);
 
 	server.views(views);
