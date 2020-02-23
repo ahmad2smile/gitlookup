@@ -1,4 +1,4 @@
-# Git-Lookup
+# Git-Lookup [![Build Status](https://github.com/ahmad2smile/gitlookup/workflows/Build/badge.svg)]() [![Tests](https://github.com/ahmad2smile/gitlookup/workflows/Tests/badge.svg)]()
 
 API has 2 endpoints:
 
