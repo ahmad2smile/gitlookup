@@ -1,12 +1,153 @@
 # Git-Lookup [![Build Status](https://github.com/ahmad2smile/gitlookup/workflows/Build/badge.svg)]() [![Tests](https://github.com/ahmad2smile/gitlookup/workflows/Tests/badge.svg)]() [![Coverage](https://user-images.githubusercontent.com/6108922/75101547-e67a0800-55ff-11ea-96e6-1d01e1f8445d.png)]()
 
-API has 2 endpoints:
+## Details
 
-1. `api/denormalize`
+A [Hapi JS](hapi.dev/) Web Application and API.
 
-    Validate and Denormalize given JSON schema.
+**DeNormalizer Schema :**
 
-2. GitHub Search API
+**POST** `api/denormalize` endpoint with JSON Body Schema
+
+Validation is done using [@Hapi/Joi](https://hapi.dev/family/joi/) Plugin.
+
+Body:
+
+<details>
+<summary>Input Schema</summary>
+
+```json
+{
+	"0": [
+		{
+			"id": 10,
+			"title": "House",
+			"level": 0,
+			"children": [],
+			"parent_id": null
+		}
+	],
+	"1": [
+		{
+			"id": 12,
+			"title": "Red Roof",
+			"level": 1,
+			"children": [],
+			"parent_id": 10
+		},
+		{
+			"id": 18,
+			"title": "Blue Roof",
+			"level": 1,
+			"children": [],
+			"parent_id": 10
+		},
+		{
+			"id": 13,
+			"title": "Wall",
+			"level": 1,
+			"children": [],
+			"parent_id": 10
+		}
+	],
+	"2": [
+		{
+			"id": 17,
+			"title": "Blue Window",
+			"level": 2,
+			"children": [],
+			"parent_id": 12
+		},
+		{
+			"id": 16,
+			"title": "Door",
+			"level": 2,
+			"children": [],
+			"parent_id": 13
+		},
+		{
+			"id": 15,
+			"title": "Red Window",
+			"level": 2,
+			"children": [],
+			"parent_id": 12
+		}
+	]
+}
+```
+
+</details>
+Response:
+<details>
+<summary>Output Schema</summary>
+
+```json
+[
+	{
+		"id": 10,
+		"title": "House",
+		"level": 0,
+		"children": [
+			{
+				"id": 12,
+				"title": "Red Roof",
+				"level": 1,
+				"children": [
+					{
+						"id": 17,
+						"title": "Blue Window",
+						"level": 2,
+						"children": [],
+						"parent_id": 12
+					},
+					{
+						"id": 15,
+						"title": "Red Window",
+						"level": 2,
+						"children": [],
+						"parent_id": 12
+					}
+				],
+				"parent_id": 10
+			},
+			{
+				"id": 18,
+				"title": "Blue Roof",
+				"level": 1,
+				"children": [],
+				"parent_id": 10
+			},
+			{
+				"id": 13,
+				"title": "Wall",
+				"level": 1,
+				"children": [
+					{
+						"id": 16,
+						"title": "Door",
+						"level": 2,
+						"children": [],
+						"parent_id": 13
+					}
+				],
+				"parent_id": 10
+			}
+		],
+		"parent_id": null
+	}
+]
+```
+
+</details>
+
+Swagger Docs:
+
+[/documentation](gitlookup.azurewebsites.net/documentation)
+
+**GitHub Repository Search :**
+
+Node JS Respository Search Results Dashboard with Pagination using [Handlebars JS](handlebarsjs.com/) as Templating Engine.
+
+[Browse](http://gitlookup.azurewebsites.net/)
 
 ## Usage
 
