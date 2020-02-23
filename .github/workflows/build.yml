@@ -6,6 +6,8 @@ on:
             - master
 
 env:
+    AZURE_WEBAPP_NAME: gitlookup
+    AZURE_WEBAPP_PACKAGE_PATH: "./dist"
     NODE_VERSION: "12.x"
 
 jobs:
@@ -21,3 +23,9 @@ jobs:
             - name: install and build
               run: |
                   npm i && npm run build
+            - name: "Deploy to Azure WebApp"
+              uses: azure/webapps-deploy@v1
+              with:
+                  app-name: ${{ env.AZURE_WEBAPP_NAME }}
+                  publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+                  package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
