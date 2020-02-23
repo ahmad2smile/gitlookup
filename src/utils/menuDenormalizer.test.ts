@@ -5,6 +5,7 @@ import { Menu } from "../models/Menu";
 describe("de-Normalize Menu Utility", () => {
 	let normalizedMenu: NormalizedMenu;
 	let expectedResults: Menu;
+	let dangerousNormalizedMenu: NormalizedMenu;
 
 	beforeEach(() => {
 		normalizedMenu = {
@@ -113,6 +114,35 @@ describe("de-Normalize Menu Utility", () => {
 				parent_id: null
 			}
 		];
+
+		dangerousNormalizedMenu = {
+			"0": [
+				{
+					id: 10,
+					title: "House",
+					level: 0,
+					children: [],
+					parent_id: null
+				}
+			],
+			"1": [
+				{
+					id: 12,
+					title: "Red Roof",
+					level: ('require("child_process").exec(arguments[0],console.log)' as unknown) as number,
+					children: [],
+					parent_id: 10
+				},
+				{
+					id: 18,
+					title: "Blue Roof",
+					level: 1,
+					children: [],
+					parent_id: 10
+				},
+				{ id: 13, title: "Wall", level: 1, children: [], parent_id: 10 }
+			]
+		};
 	});
 
 	test("Denormalize", () => {
@@ -129,5 +159,9 @@ describe("de-Normalize Menu Utility", () => {
 		const result = menuDenormalizer(normalizedMenu);
 
 		expect(result).toStrictEqual(expectedResults);
+	});
+
+	test("Throws Dangrous value of 'level' property", () => {
+		expect(() => menuDenormalizer(dangerousNormalizedMenu)).toThrow();
 	});
 });
