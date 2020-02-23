@@ -21,6 +21,6 @@ export const errorPage: ServerRoute = {
 	method: "*",
 	path: "/{any*}",
 	handler: (request: Request, h: ResponseToolkit): ResponseObject => {
-		return h.view("error");
+		return h.view("error").code(400);
 	}
 };
