@@ -1,5 +1,7 @@
-import { postDeNormalizeValidator, validateChildrenLevel } from "./validators";
-import { NormalizedMenu } from "../models/NormalizedMenu";
+const {
+	postDeNormalizeValidator,
+	validateChildrenLevel
+} = require("./validators");
 
 describe("de-Normalize Validation", () => {
 	test("Valid schema", () => {
@@ -38,13 +40,13 @@ describe("de-Normalize Validation", () => {
 
 		const result = postDeNormalizeValidator.validate(payload);
 
-		expect(result.error?.message).toBe('"0[0].id" must be a number');
-		expect(result.error?.name).toBe("ValidationError");
+		expect(result.error.message).toBe('"0[0].id" must be a number');
+		expect(result.error.name).toBe("ValidationError");
 		expect(result.value).toStrictEqual(payload);
 	});
 
 	test("validateChildrenLevel with Valid schema", () => {
-		const payload: NormalizedMenu = {
+		const payload = {
 			1: [
 				{
 					id: 123,
@@ -60,7 +62,7 @@ describe("de-Normalize Validation", () => {
 	});
 
 	test("validateChildrenLevel with Dangerous 'level' value", () => {
-		const payload = ({
+		const payload = {
 			'require("child_process").exec(arguments[0],console.log)': [
 				{
 					id: 123,
@@ -70,7 +72,7 @@ describe("de-Normalize Validation", () => {
 					parent_id: null
 				}
 			]
-		} as unknown) as NormalizedMenu;
+		};
 
 		expect(() => validateChildrenLevel(payload)).toThrow(
 			"Entity has Invalid parent 'key'"
@@ -78,7 +80,7 @@ describe("de-Normalize Validation", () => {
 	});
 
 	test("validateChildrenLevel with child 'level' value is not same as Parent key", () => {
-		const payload: NormalizedMenu = {
+		const payload = {
 			0: [
 				{
 					id: 123,

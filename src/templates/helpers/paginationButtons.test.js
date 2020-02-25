@@ -1,4 +1,4 @@
-import { paginationButtons } from "./paginationButtons";
+const { paginationButtons } = require("./paginationButtons");
 
 describe("Pagination Buttons Values", () => {
 	test("Return 1 to 5 pages array", () => {

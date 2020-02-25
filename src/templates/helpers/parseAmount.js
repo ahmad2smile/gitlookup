@@ -1,6 +1,6 @@
 const POSTFIX_K = 1000;
 
-export const parseAmount = (amount: number): string => {
+exports.parseAmount = amount => {
 	if (!amount) {
 		return "0";
 	}

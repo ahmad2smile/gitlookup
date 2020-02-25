@@ -1,12 +1,10 @@
-import { menuDenormalizer } from "./menuDenormalizer";
-import { NormalizedMenu } from "../models/NormalizedMenu";
-import { Menu } from "../models/Menu";
+const { menuDenormalizer } = require("./menuDenormalizer");
 
 describe("de-Normalize Menu Utility", () => {
-	let normalizedMenu: NormalizedMenu;
-	let expectedResults: Menu;
-	let dangerousNormalizedMenu: NormalizedMenu;
-	let stackOverflowNormalizedMenu: NormalizedMenu;
+	let normalizedMenu;
+	let expectedResults;
+	let dangerousNormalizedMenu;
+	let stackOverflowNormalizedMenu;
 
 	beforeEach(() => {
 		normalizedMenu = {
@@ -130,7 +128,8 @@ describe("de-Normalize Menu Utility", () => {
 				{
 					id: 12,
 					title: "Red Roof",
-					level: ('require("child_process").exec(arguments[0],console.log)' as unknown) as number,
+					level:
+						'require("child_process").exec(arguments[0],console.log)',
 					children: [],
 					parent_id: 10
 				},

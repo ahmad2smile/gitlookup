@@ -1,18 +1,18 @@
-import * as Hapi from "@hapi/hapi";
-import Path from "path";
+const Hapi = require("@hapi/hapi");
+const Path = require("path");
 
-import { routes } from "./routes";
-import { plugins } from "./plugins";
-import { views } from "./views";
+const { routes } = require("./routes");
+const { plugins } = require("./plugins");
+const { views } = require("./views");
 
-const init = async (): Promise<void> => {
+const init = async () => {
 	const port = process.env.PORT || 3005;
 
 	const server = new Hapi.Server({
 		port,
 		routes: {
 			files: {
-				relativeTo: Path.join(__dirname, "public")
+				relativeTo: Path.join(__dirname, "../", "public")
 			}
 		}
 	});

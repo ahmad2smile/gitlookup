@@ -1,19 +1,11 @@
 {
 	"root": true,
-	"parser": "@typescript-eslint/parser",
-	"plugins": ["@typescript-eslint", "security"],
+	"plugins": ["security"],
 	"env": {
 		"node": true
 	},
-	"extends": [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/eslint-recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:security/recommended"
-	],
+	"extends": ["eslint:recommended", "plugin:security/recommended"],
 	"rules": {
-		"no-unused-vars": "error",
-		"@typescript-eslint/explicit-function-return-type": ["error"],
-		"@typescript-eslint/camelcase": ["off"]
+		"no-unused-vars": "error"
 	}
 }

@@ -1,7 +1,6 @@
-import Handlebars from "handlebars";
-import { ServerViewsConfiguration } from "@hapi/vision";
+const Handlebars = require("handlebars");
 
-export const views: ServerViewsConfiguration = {
+exports.views = {
 	engines: {
 		html: Handlebars
 	},

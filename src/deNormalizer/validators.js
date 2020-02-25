@@ -1,6 +1,5 @@
-import Joi from "@hapi/joi";
-import { NormalizedMenu } from "../models/NormalizedMenu";
-import { badRequest } from "@hapi/boom";
+const Joi = require("@hapi/joi");
+const { badRequest } = require("@hapi/boom");
 
 const entityValidator = Joi.object({
 	id: Joi.number().required(),
@@ -14,7 +13,7 @@ const entityValidator = Joi.object({
 		.required()
 }).id("child");
 
-export const postDeNormalizeValidator = Joi.object()
+exports.postDeNormalizeValidator = Joi.object()
 	.min(1)
 	.max(100)
 	.message("Head not found in the payload")
@@ -27,11 +26,11 @@ export const postDeNormalizeValidator = Joi.object()
 			.message("Head must have at least one child")
 	);
 
-export const normalizedResponseValidator = Joi.array()
+exports.normalizedResponseValidator = Joi.array()
 	.items(entityValidator)
 	.has(entityValidator);
 
-export const validateChildrenLevel = (schema: NormalizedMenu): void => {
+exports.validateChildrenLevel = schema => {
 	const schemaKeys = Object.keys(schema).map(Number);
 
 	schemaKeys.forEach(k => {

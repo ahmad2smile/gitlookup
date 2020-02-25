@@ -1,12 +1,11 @@
-import { postDeNormalize } from "./handlers";
-import {
+const { postDeNormalize } = require("./handlers");
+const {
 	postDeNormalizeValidator,
 	normalizedResponseValidator
-} from "./validators";
-import { ServerRoute, Request, ResponseToolkit } from "@hapi/hapi";
-import { boomify } from "@hapi/boom";
+} = require("./validators");
+const { boomify } = require("@hapi/boom");
 
-export const postDeNormalizer: ServerRoute = {
+exports.postDeNormalizer = {
 	method: "POST",
 	path: "/api/denormalize",
 	handler: postDeNormalize,
@@ -15,11 +14,7 @@ export const postDeNormalizer: ServerRoute = {
 		tags: ["api"],
 		validate: {
 			payload: postDeNormalizeValidator,
-			failAction: async (
-				request: Request,
-				h: ResponseToolkit,
-				err: Error | undefined
-			): Promise<void> => {
+			failAction: async (request, h, err) => {
 				if (err) {
 					throw boomify(err);
 				}

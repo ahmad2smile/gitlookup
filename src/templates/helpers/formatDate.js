@@ -1,3 +1,3 @@
-export const formatDate = (date: string): string => {
+exports.formatDate = date => {
 	return new Intl.DateTimeFormat("en-US").format(new Date(date));
 };

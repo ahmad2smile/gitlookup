@@ -1,15 +1,9 @@
-import { NormalizedMenu } from "../models/NormalizedMenu";
-import { Menu } from "../models/Menu";
-import { Entity } from "../models/Entity";
-import { badRequest } from "@hapi/boom";
+const { badRequest } = require("@hapi/boom");
 
 let recursions = 0;
 const MAX_COMPUTATION_ALLOWED = 100;
 
-const entityDenormalizer = (
-	parents: Array<Entity>,
-	menu: NormalizedMenu
-): Array<Entity> => {
+const entityDenormalizer = (parents, menu) => {
 	recursions++;
 
 	if (recursions > MAX_COMPUTATION_ALLOWED) {
@@ -46,8 +40,8 @@ const entityDenormalizer = (
 	});
 };
 
-export const menuDenormalizer = (normalizedMenu: NormalizedMenu): Menu => {
-	const head: Array<Entity> = normalizedMenu[0];
+exports.menuDenormalizer = normalizedMenu => {
+	const head = normalizedMenu[0];
 
 	return entityDenormalizer(head, normalizedMenu);
 };
